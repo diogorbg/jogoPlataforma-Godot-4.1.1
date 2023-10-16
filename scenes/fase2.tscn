@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b88n80dofskvw"]
+[gd_scene load_steps=12 format=3 uid="uid://b88n80dofskvw"]
 
 [ext_resource type="Script" path="res://scripts/fase.gd" id="1_pwhvm"]
 [ext_resource type="Texture2D" uid="uid://bhocx6034y2iw" path="res://sprites/Terrain/Terrain (16x16).png" id="2_b645m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1dhav2mjnqqe" path="res://scenes/itens/item_base.tscn" id="5_x8ybm"]
 [ext_resource type="PackedScene" uid="uid://bljyovx47y6tn" path="res://scenes/itens/banana.tscn" id="6_odmfw"]
 [ext_resource type="PackedScene" uid="uid://cl3y52fs7rb3h" path="res://scenes/itens/laranja.tscn" id="7_bhakl"]
+[ext_resource type="PackedScene" uid="uid://db8tt83iy4ge1" path="res://scenes/hud.tscn" id="8_u1vsd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2u0j"]
 resource_name = "terreno"
@@ -546,6 +547,7 @@ sources/1 = SubResource("TileSetAtlasSource_w0a1v")
 
 [node name="fase1" type="Node2D"]
 script = ExtResource("1_pwhvm")
+fase = 2
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lugm1")
@@ -661,3 +663,5 @@ position = Vector2(160, -96)
 
 [node name="laranja16" parent="itens" instance=ExtResource("7_bhakl")]
 position = Vector2(160, -160)
+
+[node name="HUD" parent="." instance=ExtResource("8_u1vsd")]

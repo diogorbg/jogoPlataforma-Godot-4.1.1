@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn6gtb323us3a"]
+[gd_scene load_steps=12 format=3 uid="uid://dn6gtb323us3a"]
 
 [ext_resource type="Texture2D" uid="uid://bhocx6034y2iw" path="res://sprites/Terrain/Terrain (16x16).png" id="1_62rxu"]
 [ext_resource type="Script" path="res://scripts/fase.gd" id="1_q2e6l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bljyovx47y6tn" path="res://scenes/itens/banana.tscn" id="5_c6ilh"]
 [ext_resource type="PackedScene" uid="uid://cl3y52fs7rb3h" path="res://scenes/itens/laranja.tscn" id="6_7tdcx"]
 [ext_resource type="PackedScene" uid="uid://cy6wypp6nl5uj" path="res://scenes/itens/maca.tscn" id="6_bvdlx"]
+[ext_resource type="PackedScene" uid="uid://db8tt83iy4ge1" path="res://scenes/hud.tscn" id="8_yiuo0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2u0j"]
 resource_name = "terreno"
@@ -643,3 +644,5 @@ position = Vector2(512, -192)
 
 [node name="maca12" parent="itens" instance=ExtResource("6_bvdlx")]
 position = Vector2(448, -192)
+
+[node name="HUD" parent="." instance=ExtResource("8_yiuo0")]

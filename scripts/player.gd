@@ -49,4 +49,9 @@ func _physics_process(delta):
 	if velocity.x != 0:
 		animSprite.flip_h = true if velocity.x<0 else false
 	
+	if global_position.y > 200:
+		set_physics_process(false)
+		get_tree().call_group("HUD", "derrota")
+	
 	move_and_slide()
+
