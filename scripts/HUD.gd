@@ -1,9 +1,13 @@
 extends CanvasLayer
 
 @onready var anim = $anim
+@onready var hSlider = $hSlider
 
 func _ready():
 	pass
+
+func _process(_delta):
+	hSlider.value = float(Global.itens) / float(Global.maxItens) * 100
 
 func vitoria():
 	anim.play("fadeOut")

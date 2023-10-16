@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://db8tt83iy4ge1"]
+[gd_scene load_steps=7 format=3 uid="uid://db8tt83iy4ge1"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_1dg3i"]
 
@@ -56,6 +56,8 @@ _data = {
 "fadeOut": SubResource("Animation_s8jcj")
 }
 
+[sub_resource type="ImageTexture" id="ImageTexture_rdt4t"]
+
 [node name="HUD" type="CanvasLayer" groups=["HUD"]]
 script = ExtResource("1_1dg3i")
 
@@ -72,3 +74,19 @@ autoplay = "fadeIn"
 libraries = {
 "": SubResource("AnimationLibrary_eboic")
 }
+
+[node name="hSlider" type="HSlider" parent="."]
+modulate = Color(1, 0.815686, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 24.0
+grow_horizontal = 2
+pivot_offset = Vector2(100, 0)
+focus_mode = 0
+mouse_filter = 2
+theme_override_icons/grabber = SubResource("ImageTexture_rdt4t")
+value = 35.0
