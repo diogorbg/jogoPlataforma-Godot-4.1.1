@@ -252,12 +252,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_ydoav"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_27f1i"]
 resource_name = "idle"
 loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_ydoav"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14dyj"]
 _data = {
@@ -265,8 +265,8 @@ _data = {
 "idle": SubResource("Animation_27f1i")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pw6sd"]
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrvdk"]
+size = Vector2(16, 24)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -277,6 +277,7 @@ position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_fnxbh")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.545244
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -286,7 +287,7 @@ libraries = {
 [node name="colisao" type="CollisionShape2D" parent="."]
 show_behind_parent = true
 position = Vector2(0, -12)
-shape = SubResource("CapsuleShape2D_pw6sd")
+shape = SubResource("RectangleShape2D_qrvdk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_bottom = 32
