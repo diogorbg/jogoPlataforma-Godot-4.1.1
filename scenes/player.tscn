@@ -268,7 +268,8 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pw6sd"]
 height = 24.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_8vego")
 
 [node name="animSprite" type="AnimatedSprite2D" parent="."]
@@ -276,7 +277,6 @@ position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_fnxbh")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.564778
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {
