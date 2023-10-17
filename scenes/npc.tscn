@@ -1,0 +1,171 @@
+[gd_scene load_steps=18 format=3 uid="uid://bvbhkob0wt5h"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_jktfs"]
+[ext_resource type="Texture2D" uid="uid://bjb6gnhbkvfd5" path="res://sprites/Main Characters/Mask Dude/Idle (32x32).png" id="1_t1xq2"]
+[ext_resource type="Texture2D" uid="uid://cqgbiekogb6ca" path="res://sprites/Menu/boxDialog.png" id="3_b4q4j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw667"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt1c7"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hs1r"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtgq0"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfcvj"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky12l"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcj84"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x20q8"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj8dm"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa6h6"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ikmh"]
+atlas = ExtResource("1_t1xq2")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mit4p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw667")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt1c7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hs1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtgq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfcvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky12l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcj84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x20q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj8dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa6h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ikmh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1c45t"]
+size = Vector2(64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuu3d"]
+atlas = ExtResource("3_b4q4j")
+region = Rect2(5, 17, 6, 5)
+
+[node name="NPC" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_jktfs")
+fala = "Olá!"
+
+[node name="animSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_mit4p")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_1c45t")
+
+[node name="dialog" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -50.0
+offset_right = 12.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="bg" type="NinePatchRect" parent="dialog"]
+layout_mode = 2
+texture = ExtResource("3_b4q4j")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 5
+
+[node name="margin4" type="MarginContainer" parent="dialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="label" type="Label" parent="dialog/margin4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Olá!"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="dialog"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_tuu3d")
+
+[node name="Control" type="Control" parent="dialog"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="BoxDialog" type="Sprite2D" parent="dialog/Control"]
+position = Vector2(0, 3)
+texture = ExtResource("3_b4q4j")
+region_enabled = true
+region_rect = Rect2(17, 6, 6, 8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
