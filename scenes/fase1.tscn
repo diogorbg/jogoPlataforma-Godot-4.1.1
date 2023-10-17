@@ -643,5 +643,5 @@ position = Vector2(448, -192)
 
 [node name="NPC" parent="." instance=ExtResource("9_f38aq")]
 position = Vector2(384, -32)
-fala = "Aquela plataforma é realmente alta.
+fala = "Esta plataforma é realmente alta.
 Mas um pulo duplo resolve isso!"
