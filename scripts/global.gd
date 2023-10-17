@@ -12,3 +12,4 @@ func addItem():
 	itens += 1
 	if (itens == maxItens):
 		get_tree().call_group("HUD", "vitoria")
+		get_tree().call_group("player", "stop")
