@@ -7,7 +7,8 @@ func _ready():
 	pass
 
 func _process(_delta):
-	hSlider.value = float(Global.itens) / float(Global.maxItens) * 100
+	hSlider.max_value = Global.maxItens
+	hSlider.value = Global.itens
 
 func vitoria():
 	anim.play("fadeOut")
