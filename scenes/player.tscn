@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cdmqguq2spkim"]
+[gd_scene load_steps=45 format=3 uid="uid://cdmqguq2spkim"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8vego"]
 [ext_resource type="Texture2D" uid="uid://56in2fubiial" path="res://sprites/Main Characters/Ninja Frog/Idle (32x32).png" id="2_u8y3n"]
@@ -266,10 +266,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrvdk"]
-size = Vector2(16, 24)
+size = Vector2(14, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bs6jf"]
-size = Vector2(18, 22)
+size = Vector2(16, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shjj5"]
+size = Vector2(12, 4)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -290,50 +293,33 @@ libraries = {
 
 [node name="colisao" type="CollisionShape2D" parent="."]
 show_behind_parent = true
-position = Vector2(0, -12)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_qrvdk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_bottom = 32
 
 [node name="hitbox" type="Area2D" parent="."]
+show_behind_parent = true
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
 [node name="hitbox" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -14)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_bs6jf")
-debug_color = Color(0.984314, 0, 0.352941, 0.262745)
+debug_color = Color(0, 0.65098, 0.0117647, 0.262745)
 
-[node name="rayCast" type="Node" parent="."]
-process_mode = 4
-
-[node name="rayCast1" type="RayCast2D" parent="rayCast"]
-visible = false
-position = Vector2(0, -5)
-target_position = Vector2(0, 6)
+[node name="ataque" type="Area2D" parent="."]
+show_behind_parent = true
+collision_layer = 0
 collision_mask = 4
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
+monitorable = false
 
-[node name="rayCast2" type="RayCast2D" parent="rayCast"]
-visible = false
-position = Vector2(-7, -5)
-target_position = Vector2(0, 6)
-collision_mask = 4
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="rayCast3" type="RayCast2D" parent="rayCast"]
-visible = false
-position = Vector2(7, -5)
-target_position = Vector2(0, 6)
-collision_mask = 4
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
+[node name="ataque" type="CollisionShape2D" parent="ataque"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_shjj5")
+debug_color = Color(0.988235, 0, 0.313726, 0.419608)
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="ataque" to="." method="_on_ataque_body_entered"]

@@ -27,7 +27,5 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _on_hitbox_body_entered(body: Node2D):
-	if body.is_in_group("player"):
-		queue_free()
-		body.onKill()
+func addHit(_dano: int):
+	queue_free()

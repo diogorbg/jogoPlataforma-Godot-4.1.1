@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw014o1nvbtx4"]
+[gd_scene load_steps=11 format=3 uid="uid://cw014o1nvbtx4"]
 
 [ext_resource type="Script" path="res://scripts/inimigo.gd" id="1_liamp"]
 [ext_resource type="Texture2D" uid="uid://lbihx05yrtn" path="res://sprites/enemy/Mr. Chomps/Crawl_&_Chomp_(32 x 32).png" id="2_5if5j"]
@@ -54,10 +54,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcwb2"]
-size = Vector2(26, 9)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6qy5"]
-size = Vector2(24, 3)
+size = Vector2(24, 11)
 
 [node name="inimigo" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 4
@@ -71,21 +68,10 @@ animation = &"move"
 autoplay = "move"
 
 [node name="colisao" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4.5)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_mcwb2")
-
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 2
-
-[node name="hitbox" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -10.5)
-shape = SubResource("RectangleShape2D_s6qy5")
-debug_color = Color(1, 0, 0, 0.196078)
 
 [node name="rayCast" type="RayCast2D" parent="."]
 position = Vector2(0, -2)
 target_position = Vector2(-15, 0)
 collision_mask = 33
-
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

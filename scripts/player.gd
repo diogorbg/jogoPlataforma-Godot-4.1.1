@@ -55,10 +55,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func onKill():
-	animSprite.play("doubleJump")
-	velocity.y = JUMP_VELOCITY
-
 func stop():
 	set_physics_process(false)
 
@@ -66,3 +62,8 @@ func _on_hitbox_body_entered(body: Node2D):
 	if body.is_in_group("inimigo"):
 		set_physics_process(false)
 		get_tree().call_group("HUD", "derrota")
+
+func _on_ataque_body_entered(body):
+	if body.is_in_group("inimigo"):
+		body.addHit(1)
+		velocity.y = JUMP_VELOCITY
