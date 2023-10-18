@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cdmqguq2spkim"]
+[gd_scene load_steps=44 format=3 uid="uid://cdmqguq2spkim"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8vego"]
 [ext_resource type="Texture2D" uid="uid://56in2fubiial" path="res://sprites/Main Characters/Ninja Frog/Idle (32x32).png" id="2_u8y3n"]
@@ -268,8 +268,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrvdk"]
 size = Vector2(16, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bs6jf"]
+size = Vector2(18, 22)
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_8vego")
 
 [node name="animSprite" type="AnimatedSprite2D" parent="."]
@@ -291,3 +295,45 @@ shape = SubResource("RectangleShape2D_qrvdk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_bottom = 32
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_bs6jf")
+debug_color = Color(0.984314, 0, 0.352941, 0.262745)
+
+[node name="rayCast" type="Node" parent="."]
+process_mode = 4
+
+[node name="rayCast1" type="RayCast2D" parent="rayCast"]
+visible = false
+position = Vector2(0, -5)
+target_position = Vector2(0, 6)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="rayCast2" type="RayCast2D" parent="rayCast"]
+visible = false
+position = Vector2(-7, -5)
+target_position = Vector2(0, 6)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="rayCast3" type="RayCast2D" parent="rayCast"]
+visible = false
+position = Vector2(7, -5)
+target_position = Vector2(0, 6)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
