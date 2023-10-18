@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var line = $line as Line2D
-@onready var plataforma = $plataforma as StaticBody2D
+@onready var plataforma = $plataforma as AnimatableBody2D
 
 @export var velocidade: int = 48
 

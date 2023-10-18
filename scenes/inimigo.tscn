@@ -1,7 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cw014o1nvbtx4"]
+[gd_scene load_steps=16 format=3 uid="uid://cw014o1nvbtx4"]
 
 [ext_resource type="Script" path="res://scripts/inimigo.gd" id="1_liamp"]
 [ext_resource type="Texture2D" uid="uid://lbihx05yrtn" path="res://sprites/enemy/Mr. Chomps/Crawl_&_Chomp_(32 x 32).png" id="2_5if5j"]
+[ext_resource type="Texture2D" uid="uid://bv2w8akd4exvi" path="res://sprites/enemy/Mr. Chomps/Hurt_(32 x 32).png" id="2_s61v0"]
+[ext_resource type="Texture2D" uid="uid://cxpn5ewevbs2u" path="res://sprites/Other/Dust Particle.png" id="4_qeuu0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qftj"]
+atlas = ExtResource("2_s61v0")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84fr0"]
 atlas = ExtResource("2_5if5j")
@@ -31,6 +37,14 @@ region = Rect2(160, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8qftj")
+}],
+"loop": false,
+"name": &"die",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_84fr0")
 }, {
 "duration": 1.0,
@@ -56,6 +70,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcwb2"]
 size = Vector2(24, 11)
 
+[sub_resource type="Curve" id="Curve_mxrwt"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_l1efi"]
+offsets = PackedFloat32Array(0, 0.174377, 0.786477, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="inimigo" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 4
 collision_mask = 3
@@ -68,6 +90,7 @@ animation = &"move"
 autoplay = "move"
 
 [node name="colisao" type="CollisionShape2D" parent="."]
+show_behind_parent = true
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_mcwb2")
 
@@ -75,3 +98,18 @@ shape = SubResource("RectangleShape2D_mcwb2")
 position = Vector2(0, -2)
 target_position = Vector2(-15, 0)
 collision_mask = 33
+
+[node name="particulas" type="CPUParticles2D" parent="."]
+position = Vector2(0, -11)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_qeuu0")
+direction = Vector2(0, -1)
+gravity = Vector2(0, 100)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_mxrwt")
+color_ramp = SubResource("Gradient_l1efi")

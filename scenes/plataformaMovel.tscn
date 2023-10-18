@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhdwib854gp5v"]
+[gd_scene load_steps=14 format=3 uid="uid://bhdwib854gp5v"]
 
 [ext_resource type="Script" path="res://scripts/plataformaMovel.gd" id="1_llw0o"]
 [ext_resource type="Texture2D" uid="uid://jhanqophbiyo" path="res://sprites/Traps/Platforms/Chain.png" id="2_upo1c"]
@@ -71,20 +71,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwqnr"]
 size = Vector2(32, 5)
 
-[sub_resource type="Animation" id="Animation_fcn3x"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_2nf8c"]
-resource_name = "loop"
-length = 8.0
-loop_mode = 1
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ij7x6"]
-_data = {
-"RESET": SubResource("Animation_fcn3x"),
-"loop": SubResource("Animation_2nf8c")
-}
-
 [node name="plataformaMovel" type="Node2D"]
 script = ExtResource("1_llw0o")
 
@@ -109,9 +95,3 @@ frame_progress = 0.281797
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_gwqnr")
 one_way_collision = true
-
-[node name="anim" type="AnimationPlayer" parent="."]
-autoplay = "loop"
-libraries = {
-"": SubResource("AnimationLibrary_ij7x6")
-}
